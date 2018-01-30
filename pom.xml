@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
-  <artifactId>java-getting-started</artifactId>
+  <artifactId>heroku-test</artifactId>
   <version>1.0</version>
 
   <parent>
@@ -106,7 +106,18 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+        <finalName>heroku-test</finalName>
+        </configuration>
+      </plugin>
     </plugins>
+
   </build>
 
 </project>
