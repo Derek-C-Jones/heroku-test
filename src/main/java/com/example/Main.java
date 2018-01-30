@@ -38,6 +38,9 @@ import java.util.Map;
 @SpringBootApplication
 public class Main {
 
+  @Value("${spring.datasource.url}")
+  private String dbUrl;
+
   @Autowired
   private DataSource dataSource;
 
@@ -48,6 +51,17 @@ public class Main {
   @RequestMapping("/")
   String index() {
     return "index";
+  }
+  
+  @Bean
+  public DataSource dataSource() throws SQLException {
+    if (dbUrl == null || dbUrl.isEmpty()) {
+      return new HikariDataSource();
+    } else {
+      HikariConfig config = new HikariConfig();
+      config.setJdbcUrl(dbUrl);
+      return new HikariDataSource(config);
+    }
   }
 
 }
