@@ -52,7 +52,7 @@ public class Main {
   String index() {
     return "index";
   }
-  
+
   @Bean
   public DataSource dataSource() throws SQLException {
     if (dbUrl == null || dbUrl.isEmpty()) {
